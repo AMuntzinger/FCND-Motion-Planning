@@ -5,7 +5,7 @@ from enum import Enum, auto
 
 import numpy as np
 
-from planning_utils import a_star, heuristic, create_grid
+from planning_utils import a_star, heuristic, create_grid, prune_path
 from udacidrone import Drone
 from udacidrone.connection import MavlinkConnection
 from udacidrone.messaging import MsgID
@@ -156,7 +156,7 @@ class MotionPlanning(Drone):
         # Set goal as some arbitrary position on the grid
         grid_goal = (-north_offset + 10, -east_offset + 10)
         # TODO: adapt to set goal as latitude / longitude position and convert
-        goal_position_global = (-122.396855, 37.794185, 0)
+        goal_position_global = (-122.397745, 37.793837, 0)
         goal_position_local = global_to_local(goal_position_global, self.global_home)
         goal_position_local_north = int(np.round(goal_position_local[0]))
         goal_position_local_east = int(np.round(goal_position_local[1]))
